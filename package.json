@@ -1,0 +1,18 @@
+{
+  "name": "advent-of-code-2016",
+  "version": "1.0.0",
+  "description": "My solutions to Advent Of Code 2016",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "challenge",
+    "kata",
+    "christmas",
+    "advent"
+  ],
+  "author": "Dejan \"Mesko\" Mesar",
+  "license": "ISC"
+}
