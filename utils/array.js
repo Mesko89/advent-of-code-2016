@@ -6,4 +6,20 @@ function max(array) {
   return Math.max.apply(Math, array);
 }
 
-module.exports = { sum, max };
+function shortest(array) {
+  return array.reduce((currentShortest, elm) => {
+    if (currentShortest === null) return elm;
+    if (elm.length < currentShortest.length) return elm;
+    return currentShortest;
+  }, null);
+}
+
+function longest(array) {
+  return array.reduce((currentLongest, elm) => {
+    if (currentLongest === null) return elm;
+    if (elm.length > currentLongest.length) return elm;
+    return currentLongest;
+  }, null);
+}
+
+module.exports = { sum, max, shortest, longest };
