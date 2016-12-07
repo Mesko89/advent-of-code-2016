@@ -7,6 +7,6 @@ if (isNaN(day) || !day) {
   process.exit(0);
 }
 
-console.log('Running solutions for day ${day} :)');
+console.log(`Running solutions for day ${day} :)`);
 
 require(`./day-${day}`);
