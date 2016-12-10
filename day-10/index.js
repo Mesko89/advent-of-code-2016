@@ -1,12 +1,9 @@
 const fs = require('fs');
-const { sum, max } = require('../utils/array');
+const { min, max } = require('../utils/array');
 const instructions = fs.readFileSync('./day-10/input').toString('utf-8').split(/[\r\n]+/);
 
 const VALUE_SET_REGEX = /value (\d+) goes to bot (\d+)/;
 const BOT_GIVES_REGEX = /bot (\d+) gives low to (\w+) (\d+) and high to (\w+) (\d+)/;
-
-const bots = {};
-const outputs = {};
 
 function getFactory() {
   const bots = {};
@@ -27,7 +24,7 @@ function getFactory() {
         return this.values.length === 2;
       },
       canDoWork: function () { 
-        return this.values.length === 2 && 
+        return this.isWaitingForWork() && 
           (
             (this.lowToType === 'bot' && getBot(this.lowIndex).values.length < 2) ||
             this.lowToType === 'output'
@@ -38,9 +35,8 @@ function getFactory() {
       },
       doWork: function () {
         onBotWorkingDispatch(this);
-        const [value1, value2] = this.values;
-        const lowValue = Math.min(value1, value2);
-        const highValue = Math.max(value1, value2);
+        const lowValue = min(this.values);
+        const highValue = max(this.values);
         
         if (this.lowToType === 'bot') {
           const lowBot = getBot(this.lowIndex);

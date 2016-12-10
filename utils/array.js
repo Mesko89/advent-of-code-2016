@@ -6,6 +6,10 @@ function max(array) {
   return Math.max.apply(Math, array);
 }
 
+function min(array) {
+  return Math.max.apply(Math, array);
+}
+
 function shortest(array) {
   return array.reduce((currentShortest, elm) => {
     if (currentShortest === null) return elm;
@@ -22,4 +26,4 @@ function longest(array) {
   }, null);
 }
 
-module.exports = { sum, max, shortest, longest };
+module.exports = { sum, min, max, shortest, longest };
