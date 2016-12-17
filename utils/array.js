@@ -26,4 +26,14 @@ function longest(array) {
   }, null);
 }
 
-module.exports = { sum, min, max, shortest, longest };
+function distinct(array) {
+  return array.reduce((newArray, elm) => {
+    if (newArray.indexOf(elm) !== -1) {
+      return newArray;
+    }
+    newArray.push(elm);
+    return newArray;
+  }, []);
+}
+
+module.exports = { sum, min, max, shortest, longest, distinct };
