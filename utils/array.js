@@ -36,4 +36,8 @@ function distinct(array) {
   }, []);
 }
 
-module.exports = { sum, min, max, shortest, longest, distinct };
+function cloneObjectArray(array) {
+  return array.filter(obj => Object.assign({}, obj));
+}
+
+module.exports = { sum, min, max, shortest, longest, distinct, cloneObjectArray };
