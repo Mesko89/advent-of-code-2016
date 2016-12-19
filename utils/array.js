@@ -40,4 +40,16 @@ function cloneObjectArray(array) {
   return array.filter(obj => Object.assign({}, obj));
 }
 
-module.exports = { sum, min, max, shortest, longest, distinct, cloneObjectArray };
+function range(from, to, step = 1) {
+  if (arguments.length === 1) {
+    to = from;
+    from = 0;
+  }
+  const array = [];
+  for (let i = from; i < to; i += step) {
+    array.push(i);
+  }
+  return array;
+}
+
+module.exports = { sum, min, max, shortest, longest, distinct, cloneObjectArray, range };
