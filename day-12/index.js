@@ -1,46 +1,6 @@
 const fs = require('fs');
 const instructions = fs.readFileSync('./day-12/input').toString('utf-8').split(/[\r\n]+/);
-
-function compile(instructions, initialRegisters) {
-  const registers = Object.assign({ a: 0, b: 0, c: 0, d: 0}, initialRegisters);
-  const program = instructions.map(i => i.split(' '));
-
-  function getValue(v) {
-    const vint = parseInt(v);
-    return isNaN(vint) ? registers[v] : vint;
-  }
-
-  return {
-    run: function run() {
-      let i = 0;
-      do {
-        const [cmd, v1, v2] = program[i];
-        switch(cmd) {
-        case 'cpy':
-          registers[v2] = getValue(v1);
-          break;
-        case 'inc':
-          registers[v1]++;
-          break;
-        case 'dec':
-          registers[v1]--;
-          break;
-        case 'jnz':
-          if (getValue(v1) !== 0) {
-            i += parseInt(v2);
-            continue;
-          }
-          break;
-        }
-        i++;
-        if (i > 100) break;
-      } while(i < program.length);
-    },
-    readRegister: function readRegister(name) {
-      return registers[name];
-    }
-  }
-}
+const compile = require('../assembunny/compiler');
 
 const cpu1 = compile(instructions);
 cpu1.run();
